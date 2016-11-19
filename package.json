@@ -5,9 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "BABEL_ENV=test jest",
-    "dist": "mkdir -p dist && node ./generate-manifest.js && cp -r src/{images,stylesheets} dist/ && BUILD_TARGET=content rollup -c rollup.config.js && BUILD_TARGET=background rollup -c rollup.config.js",
+    "generate-manifest": "node ./generate-manifest.js",
+    "cleanup": "rm -r dist",
+    "predist": "npm run cleanup",
+    "dist": "mkdir -p dist && cp -r src/{images,stylesheets} dist/ && BUILD_TARGET=content rollup -c rollup.config.js && BUILD_TARGET=background rollup -c rollup.config.js",
+    "postdist": "npm run generate-manifest",
+    "prebuild-for-chrome": "npm run dist",
     "build-for-chrome": "./crxmake.sh dist ${PRIVATE_KEY_PATH} && mv dist.crx artifacts/select2decode.crx",
+    "prebuild-for-firefox": "BUILD_TARGET=firefox npm run dist",
     "build-for-firefox": "web-ext lint -s dist && web-ext build -s dist -a artifacts",
+    "presign-for-firefox": "BUILD_TARGET=firefox npm run dist",
     "sign-for-firefox": "web-ext lint -s dist && web-ext sign --api-key ${AMO_API_KEY} --api-secret ${AMO_API_SECRET} --id select2decode@zbinlin -s dist -a artifacts"
   },
   "keywords": [],
