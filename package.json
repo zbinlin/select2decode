@@ -1,0 +1,32 @@
+{
+  "name": "select2decode",
+  "version": "1.0.1",
+  "description": "选中 Base64 编码文本，然后单击右键菜单「Decode Base64 Text」解码",
+  "main": "index.js",
+  "scripts": {
+    "test": "BABEL_ENV=test jest",
+    "dist": "mkdir -p dist && node ./generate-manifest.js && cp -r src/{images,stylesheets} dist/ && BUILD_TARGET=content rollup -c rollup.config.js && BUILD_TARGET=background rollup -c rollup.config.js",
+    "build-for-chrome": "./crxmake.sh dist ${PRIVATE_KEY_PATH} && mv dist.crx artifacts/select2decode.crx",
+    "build-for-firefox": "web-ext lint -s dist && web-ext build -s dist -a artifacts",
+    "sign-for-firefox": "web-ext lint -s dist && web-ext sign --api-key ${AMO_API_KEY} --api-secret ${AMO_API_SECRET} --id select2decode@zbinlin -s dist -a artifacts"
+  },
+  "keywords": [],
+  "author": "zbinlin",
+  "license": "MIT",
+  "dependencies": {
+    "text-encoding": "^0.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-jest": "^17.0.2",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-latest": "^6.16.0",
+    "jest": "^17.0.3",
+    "rollup": "^0.36.3",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "web-ext": "^1.6.0"
+  }
+}

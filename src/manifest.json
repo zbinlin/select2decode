@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "select2decode",
+
+    "description": "select base64 text to decode",
+    "icons": {
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+
+    "author": "zbinlin",
+    "homepage_url": "https://github.com/zbinlin",
+
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "css": ["stylesheets/content.css"],
+            "js": ["javascripts/content.js"],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "background": {
+        "scripts": ["javascripts/background.js"]
+    },
+
+    "permissions": [
+        "contextMenus"
+    ]
+}
