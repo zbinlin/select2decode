@@ -9,7 +9,7 @@ source.version = pkg.version;
 if (/^firefox$/i.test(process.env.BUILD_TARGET)) {
     source.applications = {
         "gecko": {
-            "id": "something@mozilla.org",
+            "id": "{d4d3b34f-0f12-4a00-8663-e8efb691f13a}",
         },
     };
 }
