@@ -6,6 +6,8 @@
 * 支持多种不同的字符编码
 * 一键复制解码后的文本
 
+![demo](demo.gif)
+
 ## 安装
 
 Firefox 直接通过 [AMO](https://addons.mozilla.org/en-US/firefox/addon/select2decode/) 安装，或者下载 `artifacts/` 目录下的 xpi 文件手动安装。
