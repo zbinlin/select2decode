@@ -15,7 +15,8 @@
     "prebuild-for-firefox": "BUILD_TARGET=firefox npm run dist",
     "build-for-firefox": "web-ext lint -s dist && web-ext build -s dist -a artifacts",
     "presign-for-firefox": "BUILD_TARGET=firefox npm run dist",
-    "sign-for-firefox": "web-ext lint -s dist && web-ext sign --api-key ${AMO_API_KEY} --api-secret ${AMO_API_SECRET} --id select2decode@zbinlin -s dist -a artifacts"
+    "sign-for-firefox": "web-ext lint -s dist && web-ext sign --api-key ${AMO_API_KEY} --api-secret ${AMO_API_SECRET} --id select2decode@zbinlin -s dist -a artifacts",
+    "build-all": "npm run build-for-chrome && npm run build-for-firefox"
   },
   "keywords": [],
   "author": "zbinlin",
