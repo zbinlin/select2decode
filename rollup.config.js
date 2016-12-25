@@ -3,7 +3,6 @@
 import babel from "rollup-plugin-babel";
 import nodeResolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
-import uglify from "rollup-plugin-uglify";
 
 const BUILD_TARGET = process.env.BUILD_TARGET;
 
@@ -34,6 +33,5 @@ export default {
                 "es2015-rollup",
             ],
         }),
-        uglify(),
     ],
 };
