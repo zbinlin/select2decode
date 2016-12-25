@@ -1,6 +1,6 @@
 {
   "name": "select2decode",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "选中 Base64 编码文本，然后单击右键菜单「Decode Base64 Text」解码",
   "main": "index.js",
   "scripts": {
